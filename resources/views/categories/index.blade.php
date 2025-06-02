@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Units') }}
+            {{ __('Categories') }}
         </h2>
     </x-slot>
 
@@ -35,9 +35,9 @@
                                 {{ session('error') }}
                             </div>
                         @endif
-                        <a href="{{ route('units.create') }}"
+                        <a href="{{ route('categories.create') }}"
                             class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded shadow">
-                            {{ __('Add New Unit') }}
+                            {{ __('Add New Category') }}
                         </a>
                     </div>
                 </div>
@@ -60,39 +60,32 @@
                                     Description
                                 </th>
                                 <th
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-                                    Short Code
-                                </th>
-                                <th
                                     class="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                                     Actions
                                 </th>
                             </tr>
                         </thead>
                         <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                            @foreach ($units as $unit)
+                            @foreach ($categories as $category)
                                 <tr
                                     class="odd:bg-white even:bg-gray-50 dark:odd:bg-gray-800 dark:even:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
-                                        {{ $unit->id }}
+                                        {{ $category->id }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
-                                        {{ $unit->name }}
+                                        {{ $category->name }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
-                                        {{ $unit->description }}
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-normal text-sm text-gray-700 dark:text-gray-200">
-                                        {{ $unit->short_code }}
+                                        {{ $category->description }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-center">
-                                        <a href="{{ route('units.show', $unit) }}"
+                                        <a href="{{ route('categories.show', $category) }}"
                                             class="inline-block text-indigo-600 hover:text-indigo-800 mx-1">View
                                         </a>
-                                        <a href="{{ route('units.edit', $unit) }}"
+                                        <a href="{{ route('categories.edit', $category) }}"
                                             class="inline-block text-yellow-600 hover:text-yellow-800 mx-1">Edit
                                         </a>
-                                        <form action="{{ route('units.destroy', $unit) }}" method="POST"
+                                        <form action="{{ route('categories.destroy', $category) }}" method="POST"
                                             class="inline-block mx-1">
                                             @csrf
                                             @method('DELETE')
@@ -110,7 +103,7 @@
 
                 <!-- Pagination Links -->
                 <div class="mt-4">
-                    {{ $units->links() }}
+                    {{ $categories->links() }}
                 </div>
             </div>
         </div>
